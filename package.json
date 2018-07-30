@@ -1,0 +1,27 @@
+{
+    "name": "Code Challenge",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "keywords": [
+        "MEAN",
+        "Javascript",
+        "Node"
+    ],
+    "author": "Chisimdi Damian Ezeanieto",
+    "license": "ISC",
+    "dependencies": {
+        "@sendgrid/mail": "^6.3.1",
+        "body-parser": "^1.18.3",
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3",
+        "express-mailer": "^0.3.1",
+        "mongoose": "^5.2.5",
+        "nodemailer": "^4.6.7",
+        "sendgrid": "^5.2.3"
+    }
+}
