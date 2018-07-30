@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
     res.send('Hello world');
 });
 
+// API to register a user
 app.post('/register', (req, res) => {
     const user = new User();
     const email = typeof(req.body.email) == 'string' && req.body.email.trim().length > 0 ? req.body.email.trim() : false;
@@ -40,7 +41,7 @@ app.post('/register', (req, res) => {
             if (!err) {
                 // Send verification link
                 const html = `<b>Hello ${username}</b><br>Please verify you want to update your email with the link:
-                 http://localhost:9000/verify?username=${username}&email=${data.verificationId}&action=verify`;
+                 http://localhost:9000/verify?username=${username}&id=${data.verificationId}&action=verify`;
                 helper.sendEmailUsingNodemail(data.email, 'Upstack Challenge', 'Verify Registration', html);
                 res.json({ 'msg': 'User saved successfully. Please check your mail to verify.' });
             } else {
@@ -52,8 +53,9 @@ app.post('/register', (req, res) => {
     }
 });
 
+// API to verify both registration and updating a record.
 app.get('/verify', (req, res) => {
-    const verificationId = typeof(req.query.id) == 'string' && req.query.id.trim().length > 0 ? req.query.id.trim() : false;
+    const verificationId = typeof(req.query.id) == 'string' && req.query.id.trim().length === 10 ? req.query.id.trim() : false;
     const username = typeof(req.query.username) == 'string' && req.query.username.trim().length > 2 ? req.query.username.trim() : false;
     const email = typeof(req.query.email) == 'string' && req.query.email.trim().length > 2 ? req.query.email.trim() : false;
     const action = typeof(req.query.action) == 'string' && ['update', 'verify'].indexOf(req.query.action) > -1 ? req.query.action.trim() : false;
@@ -79,7 +81,7 @@ app.get('/verify', (req, res) => {
             res.json({ 'error': 'The link is either broken or some fields are missing' });
         }
     } else if (action === 'update') {
-        if (username && verificationId) {
+        if (username && email) {
             User.findOne({ username: username }, (err, data) => {
                 if (!err && data) {
                     data.email = email;
@@ -101,6 +103,7 @@ app.get('/verify', (req, res) => {
     }
 });
 
+// API to update a user's record.
 app.post('/update', (req, res) => {
     const email = typeof(req.body.email) == 'string' && req.body.email.trim().length > 0 ? req.body.email.trim() : false;
     const username = typeof(req.body.username) == 'string' && req.body.username.trim().length > 2 ? req.body.username.trim() : false;
@@ -117,5 +120,5 @@ app.post('/update', (req, res) => {
 });
 
 app.listen(port, _ => {
-    console.log(`Server started on port ${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
