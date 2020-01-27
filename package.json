@@ -22,6 +22,7 @@
         "express-mailer": "^0.3.1",
         "mongoose": "^5.2.5",
         "nodemailer": "^4.6.7",
-        "sendgrid": "^5.2.3"
+        "sendgrid": "^5.2.3",
+        "swagger-express-middleware": "2.0.5"
     }
 }
