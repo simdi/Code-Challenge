@@ -1,0 +1,9 @@
+{
+  "definition": {
+    "info": {
+      "title": "Api Documentation",
+      "version": "1.0.0"
+    }
+  },
+  "apis": ["./routes.js"]
+}
