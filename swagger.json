@@ -1,9 +1,12 @@
 {
   "definition": {
+    "openapi": "3.0.0",
     "info": {
       "title": "Api Documentation",
-      "version": "1.0.0"
+      "description": "Documentation is key",
+      "version": "1.0.0",
+      "servers": ["http://localhost:9000"]
     }
   },
-  "apis": ["./routes.js"]
+  "apis": ["./index.js"]
 }

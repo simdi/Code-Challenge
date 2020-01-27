@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "start": "nodemon index.js"
     },
     "keywords": [
         "MEAN",
@@ -23,6 +23,10 @@
         "mongoose": "^5.2.5",
         "nodemailer": "^4.6.7",
         "sendgrid": "^5.2.3",
+        "swagger-jsdoc": "3.5.0",
         "swagger-ui-express": "4.1.3"
+    },
+    "devDependencies": {
+        "nodemon": "2.0.2"
     }
 }
